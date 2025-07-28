@@ -2,18 +2,18 @@
   <aside class="hidden md:block w-64 p-4 bg-gray-800">
     <!-- 主题部分 -->
     <div class="mb-6">
-      <h3 class="mb-2 text-lg font-bold text-white">主题</h3>
+      <h3 class="mb-2 text-lg font-bold text-white">Topics</h3>
       <ul>
         <li class="mb-1 text-sm text-gray-300">
-          # Govee制冰机 
+          # Govee Ice Maker
           <span class="ml-2 text-green-400">673</span>
         </li>
         <li class="mb-1 text-sm text-gray-300">
-          # 户外壁灯 
+          # Outdoor Wall Light
           <span class="ml-2 text-green-400">1.5 k</span>
         </li>
         <li class="mb-1 text-sm text-gray-300">
-          # 户外花园灯 
+          # Outdoor Garden Light 
           <span class="ml-2 text-green-400">1.0 k</span>
         </li>
         <!-- Shuffle 提示 -->
@@ -25,31 +25,31 @@
 
     <!-- 俱乐部部分 -->
     <div>
-      <h3 class="mb-2 text-lg font-bold text-white">俱乐部</h3>
+      <h3 class="mb-2 text-lg font-bold text-white">Clubs</h3>
       <ul>
         <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          政府活动讨论板 
-          <span class="text-gray-400">32.7千人加入</span>
+          Government Activity Discussion Board 
+          <span class="text-gray-400">32.7 people joined</span>
           <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
         </li>
         <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          室外照明装饰 
-          <span class="text-gray-400">2660人加入</span>
+          Outdoor lighting decoration 
+          <span class="text-gray-400">2660 people joined</span>
           <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
         </li>
         <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          让它成为一个电影之夜 
-          <span class="text-gray-400">2520人加入</span>
+          Let it be a movie night 
+          <span class="text-gray-400">2520 people joined</span>
           <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
         </li>
         <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          展示您的游戏装备 
-          <span class="text-gray-400">1620人加入</span>
+          Show off your game equipment 
+          <span class="text-gray-400">1620 people joined</span>
           <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
         </li>
         <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          戈维灯光节 
-          <span class="text-gray-400">17.5千人加入</span>
+          Govi Light Festival 
+          <span class="text-gray-400">17.5 people joined</span>
           <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
         </li>
       </ul>

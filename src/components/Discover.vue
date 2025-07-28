@@ -4,47 +4,82 @@
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-bold text-gray-100">Discover</h2>
       <div class="flex space-x-2">
-        <button
-          v-for="type in filterTypes"
-          :key="type"
-          :class="['px-3 py-1 text-sm rounded', activeFilter === type ? 'bg-cyan-500 text-white' : 'bg-gray-700 text-gray-100']"
-          @click="activeFilter = type"
-        >
-          {{ type }}
-        </button>
+        <button class="px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded">All</button>
+        <button class="px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded">Questions</button>
+        <button class="px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded">Posts</button>
+        <button class="px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded">Videos</button>
       </div>
     </div>
 
     <!-- 内容卡片 -->
     <div class="space-y-4">
-      <div
-        v-for="item in filteredCards"
-        :key="item.id"
-        class="p-4 bg-gray-800 rounded"
-      >
+      <!-- 第一张卡片 -->
+      <div class="p-4 bg-gray-800 rounded">
         <div class="flex items-center mb-2">
-          <img
-            :src="item.avatar"
-            alt="Avatar"
-            class="w-10 h-10 mr-2 rounded-full"
-          />
-          <span class="text-lg font-bold text-gray-100">{{ item.author }}</span>
+          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <span class="text-lg font-bold text-gray-100">Blinded By The Lights</span>
         </div>
-        <h3 class="mb-2 text-lg font-bold text-cyan-400">{{ item.title }}</h3>
-        <p class="text-sm text-gray-300">{{ item.desc }}</p>
+        <h3 class="mb-2 text-lg font-bold text-cyan-400">Illuminate Your Wizarding World</h3>
+        <p class="text-sm text-gray-300">A magical collaboration between Blinded By The Lights & Govee...</p>
         <div class="flex flex-wrap mt-2 space-x-2">
-          <img
-            v-for="(img, idx) in item.images"
-            :key="idx"
-            :src="img"
-            alt="Post"
-            class="w-1/4 md:w-1/6 rounded"
-          />
+          <img src="/屏幕截图 2025-07-18 155810.png" alt="Post image 1" class="w-1/4 md:w-1/6 rounded">
+          <img src="/屏幕截图 2025-07-18 155800.png" alt="Post image 2" class="w-1/4 md:w-1/6 rounded">
         </div>
         <div class="flex items-center mt-2 space-x-4 text-gray-300">
-          <span>{{ item.likes }} Likes</span>
-          <span>{{ item.comments }} Comments</span>
-          <span>{{ item.time }}</span>
+          <span>231 Likes</span>
+          <span>198 Comments</span>
+          <span>3:39 PM, 7/21/2025</span>
+        </div>
+      </div>
+
+      <!-- 第二张卡片 -->
+      <div class="p-4 bg-gray-800 rounded">
+        <div class="flex items-center mb-2">
+          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
+        </div>
+        <h3 class="mb-2 text-lg font-bold text-cyan-400">Modern Bedroom Lighting Ideas</h3>
+        <p class="text-sm text-gray-300">How Govee smart lights can transform your bedroom into a cozy retreat...</p>
+        <div class="flex flex-wrap mt-2 space-x-2">
+          <img src="/屏幕截图 2025-07-18 155800.png" alt="Post image 1" class="w-1/4 md:w-1/6 rounded">
+        </div>
+        <div class="flex items-center mt-2 space-x-4 text-gray-300">
+          <span>342 Likes</span>
+          <span>76 Comments</span>
+          <span>10:15 AM, 7/22/2025</span>
+        </div>
+      </div>
+
+      <!-- 第三张卡片 -->
+      <div class="p-4 bg-gray-800 rounded">
+        <div class="flex items-center mb-2">
+          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <span class="text-lg font-bold text-gray-100">New Govee User</span>
+        </div>
+        <h3 class="mb-2 text-lg font-bold text-cyan-400">How to connect Govee lights to Alexa?</h3>
+        <p class="text-sm text-gray-300">I just bought my first Govee light strip and can't figure out the Alexa integration...</p>
+        <div class="flex items-center mt-2 space-x-4 text-gray-300">
+          <span>45 Likes</span>
+          <span>23 Comments</span>
+          <span>2:47 PM, 7/22/2025</span>
+        </div>
+      </div>
+
+      <!-- 第四张卡片 -->
+      <div class="p-4 bg-gray-800 rounded">
+        <div class="flex items-center mb-2">
+          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <span class="text-lg font-bold text-gray-100">Tech Review Channel</span>
+        </div>
+        <h3 class="mb-2 text-lg font-bold text-cyan-400">Govee Flow Pro Lightstrip Unboxing</h3>
+        <p class="text-sm text-gray-300">Testing the new Govee Flow Pro with RGBIC technology - worth the upgrade?</p>
+        <div class="flex flex-wrap mt-2 space-x-2">
+          <img src="/屏幕截图 2025-07-18 155608.png" alt="Video thumbnail" class="w-1/4 md:w-1/6 rounded">
+        </div>
+        <div class="flex items-center mt-2 space-x-4 text-gray-300">
+          <span>589 Likes</span>
+          <span>103 Comments</span>
+          <span>5:30 PM, 7/23/2025</span>
         </div>
       </div>
     </div>
@@ -52,54 +87,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-
-const filterTypes = ['All', 'Questions', 'Posts', 'Videos'];
-const activeFilter = ref('All');
-
-const cards = [
-  {
-    id: 1,
-    type: 'Posts',
-    author: 'Blinded By The Lights',
-    avatar: '/OIP-C.webp',
-    title: 'Illuminate Your Wizarding World',
-    desc: 'A magical collaboration between Blinded By The Lights & Govee...',
-    images: ['/屏幕截图 2025-07-18 155810.png', '/屏幕截图 2025-07-18 155800.png'],
-    likes: 231,
-    comments: 198,
-    time: '3:39 PM, 7/21/2025',
-  },
-  {
-    id: 2,
-    type: 'Questions',
-    author: 'Govee Fan',
-    avatar: '/vite.svg',
-    title: 'How to sync lights with music?',
-    desc: 'Looking for tips to sync my Govee lights with Spotify.',
-    images: ['/屏幕截图 2025-07-18 155608.png'],
-    likes: 88,
-    comments: 34,
-    time: '10:12 AM, 7/22/2025',
-  },
-  {
-    id: 3,
-    type: 'Videos',
-    author: 'Tech Guru',
-    avatar: '/vue.svg',
-    title: 'Govee Light Strip Review',
-    desc: 'Watch my full review of the new Govee light strip!',
-    images: ['/屏幕截图 2025-07-18 155714.png'],
-    likes: 120,
-    comments: 56,
-    time: '8:00 PM, 7/23/2025',
-  },
-];
-
-const filteredCards = computed(() => {
-  if (activeFilter.value === 'All') return cards;
-  return cards.filter(card => card.type === activeFilter.value);
-});
+// 简化代码，移除可能引起问题的动态数据
 </script>
 
 <style scoped>
@@ -108,3 +96,4 @@ img {
   height: auto;
 }
 </style>
+    

@@ -1,11 +1,28 @@
+/* 替换原有 :root 配置 */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Govee品牌主色调 */
+  --primary: #00C2FF;
+  --primary-dark: #00A0E4;
+  --primary-light: rgba(0, 194, 255, 0.1);
+  
+  /* 深色模式背景体系 */
+  --bg-dark: #121212;
+  --bg-medium: #1E1E1E;
+  --bg-light: #2D2D2D;
+  
+  /* 文本颜色体系 */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3B3;
+  --text-tertiary: #8A8A8A;
+  
+  /* 功能色 */
+  --success: #00B42A;
+  --warning: #FF7D00;
+  --danger: #F53F3F;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,67 +30,74 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 更新基础样式 */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  color: var(--primary-dark);
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 999px; /* 改为圆形按钮 */
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--primary);
+  background-color: var(--bg-light);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto rgba(0, 194, 255, 0.5);
 }
 
+/* 全局滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-medium);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* 卡片基础样式 */
 .card {
   padding: 2em;
+  border-radius: 12px;
+  background-color: var(--bg-medium);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 #app {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* 移除浅色模式适配，保持深色主题一致性 */
