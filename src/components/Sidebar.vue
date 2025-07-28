@@ -1,56 +1,92 @@
 <template>
-  <aside class="hidden md:block w-64 p-4 bg-gray-800">
-    <!-- 主题部分 -->
-    <div class="mb-6">
-      <h3 class="mb-2 text-lg font-bold text-white">Topics</h3>
+  <aside class="hidden md:block w-64 p-4 bg-gray-800 transition-all duration-300">
+    <!-- Topics Section -->
+    <div class="mb-8 border border-gray-700 rounded-lg p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-white">Popular Topics</h3>
+        <button class="text-xs text-blue-400 hover:text-blue-300 transition-colors">
+          View All
+        </button>
+      </div>
       <ul>
-        <li class="mb-1 text-sm text-gray-300">
-          # Govee Ice Maker
-          <span class="ml-2 text-green-400">673</span>
+        <li class="mb-2 p-2 rounded hover:bg-gray-700 transition-colors cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300"># Govee Ice Maker</span>
+            <span class="text-xs text-green-400">673</span>
+          </div>
         </li>
-        <li class="mb-1 text-sm text-gray-300">
-          # Outdoor Wall Light
-          <span class="ml-2 text-green-400">1.5 k</span>
+        <li class="mb-2 p-2 rounded hover:bg-gray-700 transition-colors cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300"># Outdoor Wall Light</span>
+            <span class="text-xs text-green-400">1.5k</span>
+          </div>
         </li>
-        <li class="mb-1 text-sm text-gray-300">
-          # Outdoor Garden Light 
-          <span class="ml-2 text-green-400">1.0 k</span>
+        <li class="mb-2 p-2 rounded hover:bg-gray-700 transition-colors cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300"># Outdoor Garden Light</span>
+            <span class="text-xs text-green-400">1.0k</span>
+          </div>
         </li>
-        <!-- Shuffle 提示 -->
-        <div class="mt-2 text-sm text-blue-400 text-right">
-          Shuffle(6/8)
+        <!-- Topic shuffle indicator -->
+        <div class="mt-2 text-sm text-blue-400 text-right cursor-pointer hover:text-blue-300 transition-colors">
+          Shuffle <span class="opacity-70">(6/8)</span>
         </div>
       </ul>
     </div>
 
-    <!-- 俱乐部部分 -->
-    <div>
-      <h3 class="mb-2 text-lg font-bold text-white">Clubs</h3>
+    <!-- Clubs Section -->
+    <div class="border border-gray-700 rounded-lg p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-white">Recommended Clubs</h3>
+        <button class="text-xs text-blue-400 hover:text-blue-300 transition-colors">
+          More
+        </button>
+      </div>
       <ul>
-        <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          Government Activity Discussion Board 
-          <span class="text-gray-400">32.7 people joined</span>
-          <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
+        <li class="mb-3 p-2 rounded hover:bg-gray-700 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300">Government Activity Board</span>
+            <div class="flex items-center">
+              <span class="text-xs text-gray-400 mr-2">32.7k members</span>
+              <button class="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors">+</button>
+            </div>
+          </div>
         </li>
-        <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          Outdoor lighting decoration 
-          <span class="text-gray-400">2660 people joined</span>
-          <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
+        <li class="mb-3 p-2 rounded hover:bg-gray-700 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300">Outdoor Lighting Decor</span>
+            <div class="flex items-center">
+              <span class="text-xs text-gray-400 mr-2">2,660 members</span>
+              <button class="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors">+</button>
+            </div>
+          </div>
         </li>
-        <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          Let it be a movie night 
-          <span class="text-gray-400">2520 people joined</span>
-          <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
+        <li class="mb-3 p-2 rounded hover:bg-gray-700 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300">Let's Make It Movie Night</span>
+            <div class="flex items-center">
+              <span class="text-xs text-gray-400 mr-2">2,520 members</span>
+              <button class="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors">+</button>
+            </div>
+          </div>
         </li>
-        <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          Show off your game equipment 
-          <span class="text-gray-400">1620 people joined</span>
-          <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
+        <li class="mb-3 p-2 rounded hover:bg-gray-700 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300">Show Off Your Gaming Setup</span>
+            <div class="flex items-center">
+              <span class="text-xs text-gray-400 mr-2">1,620 members</span>
+              <button class="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors">+</button>
+            </div>
+          </div>
         </li>
-        <li class="mb-3 flex items-center justify-between text-sm text-gray-300">
-          Govi Light Festival 
-          <span class="text-gray-400">17.5 people joined</span>
-          <button class="ml-2 px-2 py-1 text-xs text-white bg-blue-500 rounded">+</button>
+        <li class="mb-3 p-2 rounded hover:bg-gray-700 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-300">Govee Light Festival</span>
+            <div class="flex items-center">
+              <span class="text-xs text-gray-400 mr-2">17.5k members</span>
+              <button class="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors">+</button>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -58,10 +94,17 @@
 </template>
 
 <style scoped>
-/* 移动端隐藏侧边栏 */
+/* Hide sidebar on mobile */
 @media (max-width: 768px) {
   aside {
     display: none;
+  }
+}
+
+/* Add feedback for touch devices */
+@media (hover: none) {
+  li:active {
+    background-color: #4b5563;
   }
 }
 </style>
