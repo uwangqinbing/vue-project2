@@ -1,7 +1,11 @@
 // src/main.js
 import { createApp } from 'vue'
 import './style.css'
-import './tailwind.css' // 引入 Tailwind 样式
+import './tailwind.css'
 import App from './App.vue'
+// 导入路由配置
+import router from './router'  
 
-createApp(App).mount('#app')
+createApp(App)
+  .use(router) // 关键：注册路由
+  .mount('#app')

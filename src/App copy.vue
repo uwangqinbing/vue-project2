@@ -11,7 +11,7 @@
 
       <!-- 内容区（占满剩余空间） -->
       <div class="w-full md:w-2/3 p-4">
-        <router-view></router-view> 
+        <Discover />
       </div>
     </main>
 
@@ -23,6 +23,7 @@
 <script setup>
 import Header from './components/Header.vue'
 import Sidebar from './components/Sidebar.vue'
+import Discover from './components/Discover.vue'
 import Footer from './components/Footer.vue'
 </script>
 
