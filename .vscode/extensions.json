@@ -1,3 +1,4 @@
 {
   "recommendations": ["Vue.volar"]
 }
+//recommendations 是 “推荐插件列表” 。意思是：如果你用 VS Code 打开这个项目，编辑器会提示你安装 Vue.volar 插件

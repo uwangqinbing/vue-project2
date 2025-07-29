@@ -16,7 +16,12 @@
       <!-- 第一张卡片 -->
       <div class="p-4 bg-gray-800 rounded">
         <div class="flex items-center mb-2">
-          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <!-- 圆形头像核心样式：rounded-full + object-cover -->
+          <img 
+            src="/OIP-C.webp" 
+            alt="User avatar" 
+            class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
+          >
           <span class="text-lg font-bold text-gray-100">Blinded By The Lights</span>
         </div>
         <h3 class="mb-2 text-lg font-bold text-cyan-400">Illuminate Your Wizarding World</h3>
@@ -32,10 +37,13 @@
         </div>
       </div>
 
-      <!-- 第二张卡片 -->
       <div class="p-4 bg-gray-800 rounded">
         <div class="flex items-center mb-2">
-          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
+          <img 
+            src="/OIP-C.webp" 
+            alt="User avatar" 
+            class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
+          >
           <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
         </div>
         <h3 class="mb-2 text-lg font-bold text-cyan-400">Modern Bedroom Lighting Ideas</h3>
@@ -49,12 +57,15 @@
           <span>10:15 AM, 7/22/2025</span>
         </div>
       </div>
-
-      <!-- 第三张卡片 -->
+      
       <div class="p-4 bg-gray-800 rounded">
         <div class="flex items-center mb-2">
-          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
-          <span class="text-lg font-bold text-gray-100">New Govee User</span>
+          <img 
+            src="/OIP-C.webp" 
+            alt="User avatar" 
+            class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
+          >
+          <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
         </div>
         <h3 class="mb-2 text-lg font-bold text-cyan-400">How to connect Govee lights to Alexa?</h3>
         <p class="text-sm text-gray-300">I just bought my first Govee light strip and can't figure out the Alexa integration...</p>
@@ -65,11 +76,14 @@
         </div>
       </div>
 
-      <!-- 第四张卡片 -->
       <div class="p-4 bg-gray-800 rounded">
         <div class="flex items-center mb-2">
-          <img src="/OIP-C.webp" alt="User avatar" class="w-10 h-10 mr-2 rounded-full">
-          <span class="text-lg font-bold text-gray-100">Tech Review Channel</span>
+          <img 
+            src="/OIP-C.webp" 
+            alt="User avatar" 
+            class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
+          >
+          <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
         </div>
         <h3 class="mb-2 text-lg font-bold text-cyan-400">Govee Flow Pro Lightstrip Unboxing</h3>
         <p class="text-sm text-gray-300">Testing the new Govee Flow Pro with RGBIC technology - worth the upgrade?</p>
@@ -91,9 +105,9 @@
 </script>
 
 <style scoped>
+/* 确保图片自适应，防止变形 */
 img {
   max-width: 100%;
   height: auto;
 }
 </style>
-    
