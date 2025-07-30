@@ -7,7 +7,7 @@
     >
       ← 返回列表
     </button>
-    
+
     <!-- 帖子详情内容 -->
     <div class="bg-gray-800 p-6 rounded-lg">
       <h1 class="text-2xl font-bold text-white mb-4">帖子详情 #{{ id }}</h1>
