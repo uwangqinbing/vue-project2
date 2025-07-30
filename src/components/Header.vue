@@ -25,8 +25,18 @@
 
     <!-- 功能按钮 -->
     <div class="flex items-center space-x-4">
-      <button class="px-4 py-2 text-sm text-white bg-gray-700 rounded-md hover:bg-gray-600">Post</button>
-      <button class="px-4 py-2 text-sm text-white bg-cyan-600 rounded-md hover:bg-cyan-500">Sign in</button>
+      <button 
+        class="px-4 py-2 text-sm text-white bg-gray-700 rounded-md hover:bg-gray-600"
+        @click="handleShowLoginModal" 
+      >
+        Post
+      </button>
+      <button 
+        class="px-4 py-2 text-sm text-white bg-cyan-600 rounded-md hover:bg-cyan-500"
+        @click="handleShowLoginModal" 
+      >
+        Sign in
+      </button>
     </div>
 
     <!-- 搜索状态提示 -->
@@ -62,6 +72,13 @@
     >
       没有找到与 "{{ searchQuery }}" 相关的内容
     </div>
+
+    <!-- 登录弹窗组件 - 添加更高的z-index确保显示在最上层 -->
+    <LoginModal 
+      v-if="showLoginModal" 
+      @close="showLoginModal = false"
+      class="z-60"  
+    />
   </header>
 </template>
 
@@ -69,19 +86,30 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useSearchStore } from '../store/searchStore';
+// 确保LoginModal组件路径正确
+// 如果你的LoginModal在components目录下，路径应该是这样的：
+import LoginModal from '../components/LoginModal.vue';
 
+// 登录弹窗控制变量
+const showLoginModal = ref(false);
+
+// 显示登录弹窗的方法（便于调试和扩展）
+const handleShowLoginModal = () => {
+  showLoginModal.value = true;
+  // 调试用：确认方法被调用
+  console.log('登录弹窗应显示，当前状态:', showLoginModal.value);
+};
+
+// 搜索相关逻辑（保持不变）
 const searchStore = useSearchStore();
 const searchQuery = ref('');
 const router = useRouter();
 
-// 输入时更新关键词
 const handleSearchInput = (e) => {
   searchStore.setSearchQuery(e.target.value);
 };
 
-// 执行搜索
 const performSearch = () => {
-  // 确保有搜索内容才执行
   if (searchQuery.value.trim()) {
     searchStore.performSearch();
   } else {
@@ -89,14 +117,12 @@ const performSearch = () => {
   }
 };
 
-// 点击结果跳转
 const goToResult = (route) => {
   router.push(route);
   searchStore.searchResults = [];
   searchQuery.value = '';
 };
 
-// 可选：输入停止300ms后自动搜索
 watch(searchQuery, (newVal) => {
   const timer = setTimeout(() => {
     if (newVal.trim()) {
@@ -109,4 +135,3 @@ watch(searchQuery, (newVal) => {
   return () => clearTimeout(timer);
 });
 </script>
-    
