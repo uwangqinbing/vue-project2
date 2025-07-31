@@ -1,7 +1,7 @@
 <template>
-  <div v-if="visible" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div v-if="visible" class="fixed inset-0 z-9999 flex items-center justify-center bg-black/50">
     <!-- 弹窗容器 -->
-    <div class="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-xl transform transition-all">
+    <div class="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-2xl transform transition-all relative z-10">
       <!-- 关闭按钮 -->
       <button @click="onClose" class="float-right text-gray-400 hover:text-white">×</button>
       
