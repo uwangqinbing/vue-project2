@@ -10,13 +10,16 @@
         </button>
       </div>
 
+      <!-- 错误信息显示 -->
+      <div v-if="errorMessage" class="text-red-500 text-sm mb-4">{{ errorMessage }}</div>
+
       <div class="space-y-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
             v-model="email"
             type="email"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            class="w-full px-3 py-2 border border-gray-300  text-gray-900 rounded-md"
             placeholder="Enter your email"
           >
         </div>
@@ -26,7 +29,7 @@
           <input
             v-model="password"
             type="password"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            class="w-full px-3 py-2 border border-gray-300  text-gray-900 rounded-md"
             placeholder="Enter your password"
           >
         </div>
@@ -59,15 +62,20 @@ const emit = defineEmits(['close', 'login']);
 // State
 const email = ref('');
 const password = ref('');
+const errorMessage = ref(''); // 新增错误信息状态
 
 // Methods
 const handleClose = () => {
+  errorMessage.value = ''; // 关闭时清空错误信息
   emit('close');
 };
 
 const handleLogin = () => {
+  // 清空之前的错误信息
+  errorMessage.value = '';
+  
   if (!email.value || !password.value) {
-    alert('Please fill in all fields');
+    errorMessage.value = 'Please fill in all fields';
     return;
   }
 

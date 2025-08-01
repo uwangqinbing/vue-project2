@@ -15,7 +15,7 @@
             @input="handleSearch"
             @focus="showSearchResults = true"
             placeholder="搜索帖子..."
-            class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
           >
           <button @click="handleSearch" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -105,7 +105,14 @@ const handleLogin = async (credentials) => {
     await loginStore.login(credentials);
     // Login successful
   } catch (error) {
-    alert('Login failed: ' + error.message);
+    // 将错误信息传递给登录模态框
+    const loginModal = document.querySelector('.fixed.inset-0');
+    if (loginModal) {
+      const errorElement = loginModal.querySelector('.text-red-500');
+      if (errorElement) {
+        errorElement.textContent = 'Login failed: ' + error.message;
+      }
+    }
   }
 };
 

@@ -24,7 +24,8 @@
       <!-- Post Header -->
       <div class="p-6">
         <div class="flex items-center mb-4">
-          <img :src="postStore.currentPost.authorAvatar || '/default-avatar.png'" alt="Author" class="w-10 h-10 rounded-full mr-3">
+          <!-- 固定使用public文件夹中的OIP-C.webp作为头像 -->
+          <img src="/OIP-C.webp" alt="Author avatar" class="w-10 h-10 rounded-full mr-3">
           <div>
             <h3 class="font-bold text-gray-900">{{ postStore.currentPost.author }}</h3>
             <p class="text-sm text-gray-500">{{ postStore.currentPost.date }}</p>
@@ -33,13 +34,15 @@
 
         <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ postStore.currentPost.title }}</h1>
 
-        <div class="flex flex-wrap gap-2 mb-6">
+        <!-- 修复 tags 遍历 -->
+        <div class="flex flex-wrap gap-2 mb-6" v-if="postStore.currentPost.tags && postStore.currentPost.tags.length > 0">
           <span v-for="tag in postStore.currentPost.tags" :key="tag" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
             {{ tag }}
           </span>
         </div>
 
-        <img :src="postStore.currentPost.image" alt="Post Image" class="w-full h-64 object-cover rounded-lg mb-6">
+        <!-- 固定使用public文件夹中的屏幕截图作为帖子图片 -->
+        <img src="/屏幕截图 2025-07-18 155714.png" alt="Post image" class="w-full h-64 object-cover rounded-lg mb-6">
 
         <div class="prose max-w-none text-gray-700">
           <p v-for="(paragraph, index) in postStore.currentPost.content.split('\n\n')" :key="index" class="mb-4">
@@ -71,7 +74,8 @@
         <div class="space-y-4">
           <div v-for="comment in postStore.currentPost.comments" :key="comment.id" class="border-b border-gray-100 pb-4">
             <div class="flex items-start">
-              <img :src="comment.authorAvatar || '/default-avatar.png'" alt="Comment Author" class="w-8 h-8 rounded-full mr-3 mt-1">
+              <!-- 评论者头像也使用OIP-C.webp -->
+              <img src="/OIP-C.webp" alt="Comment author avatar" class="w-8 h-8 rounded-full mr-3 mt-1">
               <div class="flex-1">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="font-bold text-gray-900 text-sm">{{ comment.author }}</h4>
