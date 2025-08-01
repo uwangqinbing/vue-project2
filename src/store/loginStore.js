@@ -1,24 +1,50 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
-// 注意：useLoginStore 首字母建议大写（符合 Pinia 命名习惯）
-export const useLoginStore = defineStore('login', {
+export const useLoginStore = defineStore('loginStore', {
   state: () => ({
-    // 修正：统一为 showLoginModal（驼峰正确写法）
-    showLoginModal: false, 
-    userInfo: null 
+    showLoginModal: false,
+    userInfo: null,
+    // Mock user data
+    users: [
+      {
+        id: 1,
+        email: 'user@example.com',
+        password: 'password123',
+        username: 'John Doe',
+        avatar: '/user-avatar.png'
+      }
+    ]
   }),
   actions: {
-    // 修正：方法名 openLoginModal（与 state 命名呼应）
-    openLoginModal() { 
-      this.showLoginModal = true
+    openLoginModal() {
+      this.showLoginModal = true;
     },
-    // 修正：方法名 closeLoginModal
-    closeLoginModal() { 
-      this.showLoginModal = false
+    closeLoginModal() {
+      this.showLoginModal = false;
     },
-    login(userData) {
-      this.userInfo = userData
-      this.closeLoginModal()
+    login(credentials) {
+      return new Promise((resolve, reject) => {
+        // Simulate API call
+        setTimeout(() => {
+          const user = this.users.find(
+            u => u.email === credentials.email && u.password === credentials.password
+          );
+
+          if (user) {
+            // Store user info without password
+            const { password, ...userWithoutPassword } = user;
+            this.userInfo = userWithoutPassword;
+            this.closeLoginModal();
+            resolve(userWithoutPassword);
+          } else {
+            reject(new Error('Invalid email or password'));
+          }
+        }, 500);
+      });
+    },
+    logout() {
+      this.userInfo = null;
     }
-  }
-})
+  },
+  persist: true // This will persist the state across page refreshes
+});
