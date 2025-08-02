@@ -25,10 +25,10 @@
                 class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
               >
             </router-link>
-            <span class="text-lg font-bold text-gray-100">Blinded By The Lights</span>
+            <span class="text-lg font-bold text-gray-100">TechLover</span>
           </div>
-          <h3 class="mb-2 text-lg font-bold text-cyan-400">Illuminate Your Wizarding World</h3>
-          <p class="text-sm text-gray-300">A magical collaboration between Blinded By The Lights & Govee...</p>
+          <h3 class="mb-2 text-lg font-bold text-cyan-400">Govee LED Strip Review</h3>
+          <p class="text-sm text-gray-300">I recently purchased the Govee LED strip and it exceeded my...</p>
           <div class="flex flex-wrap mt-2 space-x-2">
             <img src="/屏幕截图 2025-07-18 155810.png" alt="Post image 1" class="w-1/4 md:w-1/6 rounded">
             <img src="/屏幕截图 2025-07-18 155800.png" alt="Post image 2" class="w-1/4 md:w-1/6 rounded">
@@ -53,10 +53,10 @@
                 class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
               >
             </router-link>
-            <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
+            <span class="text-lg font-bold text-gray-100">SmartHomeExpert</span>
           </div>
-          <h3 class="mb-2 text-lg font-bold text-cyan-400">Modern Bedroom Lighting Ideas</h3>
-          <p class="text-sm text-gray-300">How Govee smart lights can transform your bedroom into a cozy retreat...</p>
+          <h3 class="mb-2 text-lg font-bold text-cyan-400">Setting up Govee Smart Bulbs</h3>
+          <p class="text-sm text-gray-300">Here's a step-by-step guide to setting up your Govee smart bulbs...</p>
           <div class="flex flex-wrap mt-2 space-x-2">
             <img src="/屏幕截图 2025-07-18 155800.png" alt="Post image 1" class="w-1/4 md:w-1/6 rounded">
           </div>
@@ -80,10 +80,10 @@
                 class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
               >
             </router-link>
-            <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
+            <span class="text-lg font-bold text-gray-100">ComparisonKing</span>
           </div>
-          <h3 class="mb-2 text-lg font-bold text-cyan-400">How to connect Govee lights to Alexa?</h3>
-          <p class="text-sm text-gray-300">I just bought my first Govee light strip and can't figure out the Alexa integration...</p>
+          <h3 class="mb-2 text-lg font-bold text-cyan-400">Govee vs Phillips Hue</h3>
+          <p class="text-sm text-gray-300">A detailed comparison between Govee and Phillips Hue smart lighting systems...</p>
           <div class="flex items-center mt-2 space-x-4 text-gray-300">
             <span>45 Likes</span>
             <span>23 Comments</span>
@@ -104,10 +104,10 @@
                 class="w-10 h-10 mr-2 rounded-full object-cover border-2 border-gray-600 !h-10"
               >
             </router-link>
-            <span class="text-lg font-bold text-gray-100">Home Decor Expert</span>
+            <span class="text-lg font-bold text-gray-100">ProductHunter</span>
           </div>
-          <h3 class="mb-2 text-lg font-bold text-cyan-400">Govee Flow Pro Lightstrip Unboxing</h3>
-          <p class="text-sm text-gray-300">Testing the new Govee Flow Pro with RGBIC technology - worth the upgrade?</p>
+          <h3 class="mb-2 text-lg font-bold text-cyan-400">Best Govee Products in 2023</h3>
+          <p class="text-sm text-gray-300">My top picks for the best Govee products available this year</p>
           <div class="flex flex-wrap mt-2 space-x-2">
             <img src="/屏幕截图 2025-07-18 155608.png" alt="Video thumbnail" class="w-1/4 md:w-1/6 rounded">
           </div>
