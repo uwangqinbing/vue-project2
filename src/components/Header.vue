@@ -12,24 +12,32 @@
         <div class="relative">
           <input
             v-model="searchQuery"
-            @input="handleSearch"
+            @input="handleInput" 
             @focus="showSearchResults = true"
+            @keydown.enter="handleSearchSubmit" 
             placeholder="搜索帖子..."
             class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
           >
-          <button @click="handleSearch" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <button @click="handleSearchSubmit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
             </svg>
           </button>
         </div>
 
-        <!-- Search Results -->
+        <!-- 实时搜索结果 -->
         <div v-if="showSearchResults && searchResults.length > 0" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-lg overflow-hidden">
           <div v-for="result in searchResults" :key="result.id" class="p-3 hover:bg-gray-100 cursor-pointer" @click="goToPostDetail(result.id)">
-            <h3 class="font-medium">{{ result.title }}</h3>
-            <p class="text-sm text-gray-600">{{ result.content.substring(0, 50) }}...</p>
+            <h3 class="font-medium" v-html="highlightKeyword(result.title)"></h3>
+            <p class="text-sm text-gray-600" 
+            v-html="highlightKeyword(result.content.substring(0, 50) + (result.content.length > 50 ? '...' : ''))">
+            </p>
           </div>
+        </div>
+
+        <!-- 无结果提示 -->
+        <div v-if="showSearchResults && searchResults.length === 0 && searchQuery" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-lg p-3 text-gray-500">
+          没有找到与「{{ searchQuery }}」相关的内容
         </div>
       </div>
 
@@ -60,7 +68,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, onUnmounted, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { useLoginStore } from '@/store/loginStore';
 import { useSearchStore } from '@/store/searchStore';
@@ -70,62 +78,90 @@ const router = useRouter();
 const loginStore = useLoginStore();
 const searchStore = useSearchStore();
 
-// State
+// 状态管理
 const searchQuery = ref('');
 const showSearchResults = ref(false);
 const searchResults = ref([]);
 const userInfo = ref(null);
+let debounceTimer = null;
 
-// Watch for auth state changes
-watch(
-  () => loginStore.userInfo,
-  (newVal) => {
-    userInfo.value = newVal;
-  },
-  { immediate: true }
-);
+// 关键词高亮
+const highlightKeyword = (text) => {
+  if (!searchQuery.value) return text;
+  const keyword = searchQuery.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${keyword})`, 'gi');
+  return text.replace(regex, '<span class="text-red-600 font-medium">$1</span>');
+};
 
-// Methods
-const handleSearch = () => {
-  if (searchQuery.value.length > 0) {
-    searchStore.performSearch(searchQuery.value);
-    searchResults.value = searchStore.searchResults;
-  } else {
-    searchResults.value = [];
+// 带防抖的实时搜索
+const handleInput = () => {
+  if (debounceTimer) clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    if (searchQuery.value.trim()) {
+      searchStore.performSearch(searchQuery.value);
+      searchResults.value = searchStore.searchResults;
+      showSearchResults.value = true;
+    } else {
+      searchResults.value = [];
+      showSearchResults.value = false;
+    }
+  }, 200);
+};
+
+// 提交搜索（跳转到SEO结果页）
+const handleSearchSubmit = () => {
+  if (searchQuery.value.trim()) {
+    router.push({ path: '/search', query: { q: searchQuery.value } });
+    showSearchResults.value = false;
   }
 };
 
+// 监听登录状态
+watch(() => loginStore.userInfo, (newVal) => {
+  userInfo.value = newVal;
+}, { immediate: true });
+
+// 同步搜索结果
+watch(() => searchStore.searchResults, (newResults) => {
+  searchResults.value = newResults;
+});
+
+// 初始化：从URL参数加载搜索词
+onMounted(() => {
+  const query = new URLSearchParams(window.location.search).get('q');
+  if (query) {
+    searchQuery.value = query;
+    nextTick(() => searchStore.performSearch(query));
+  }
+
+  // 点击外部关闭结果框
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.relative')) showSearchResults.value = false;
+  });
+});
+
+// 清理计时器
+onUnmounted(() => {
+  if (debounceTimer) clearTimeout(debounceTimer);
+});
+
+// 跳转帖子详情
 const goToPostDetail = (postId) => {
   router.push(`/post/${postId}`);
   showSearchResults.value = false;
 };
 
+// 登录/注销逻辑（不变）
 const handleLogin = async (credentials) => {
+  console.log('接收登录信息:', credentials); // 检查是否触发
   try {
     await loginStore.login(credentials);
-    // Login successful
+    console.log('登录成功');
+    loginStore.closeLoginModal(); // 登录成功后关闭模态框
   } catch (error) {
-    // 将错误信息传递给登录模态框
-    const loginModal = document.querySelector('.fixed.inset-0');
-    if (loginModal) {
-      const errorElement = loginModal.querySelector('.text-red-500');
-      if (errorElement) {
-        errorElement.textContent = 'Login failed: ' + error.message;
-      }
-    }
+    console.error('登录失败:', error);
+    // 改用 LoginModal的errorMessage显示错误，而非DOM查询
   }
 };
-
-const handleLogout = () => {
-  loginStore.logout();
-};
-
-// Close search results when clicking outside
-onMounted(() => {
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.relative')) {
-      showSearchResults.value = false;
-    }
-  });
-});
+const handleLogout = () => loginStore.logout();
 </script>
