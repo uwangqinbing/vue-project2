@@ -99,6 +99,7 @@
 import { onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePostStore } from '@/store/postStore';
+import { useMeta } from 'vue-meta';
 
 const router = useRouter();
 const postStore = usePostStore();
@@ -120,4 +121,19 @@ onUnmounted(() => {
 const goBack = () => {
   router.go(-1);
 };
+
+// 动态设置meta
+useMeta(() => ({
+  title: `${postStore.currentPost?.title} | Govee 社区`,
+  meta: [
+    { 
+      name: 'keywords', 
+      content: [...(postStore.currentPost?.tags || []), 'Govee', '智能设备'].join(', ')
+    },
+    { 
+      name: 'description', 
+      content: postStore.currentPost?.content.substring(0, 160) || 'Govee智能设备社区讨论'
+    }
+  ]
+}));
 </script>

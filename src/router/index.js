@@ -24,9 +24,10 @@ const routes = [
     props: true
   },
   { 
-    path: '/search', 
-    name: 'SearchResults', 
-    component: SearchResult 
+  path: '/search/:query',
+  name: 'SearchResults', 
+  component: SearchResult,
+  props: true
   }
 ];
 

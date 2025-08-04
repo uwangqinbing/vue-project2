@@ -111,7 +111,7 @@ const handleInput = () => {
 // 提交搜索（跳转到SEO结果页）
 const handleSearchSubmit = () => {
   if (searchQuery.value.trim()) {
-    router.push({ path: '/search', query: { q: searchQuery.value } });
+    router.push({ name: 'SearchResults', params: { query: searchQuery.value.trim() } });
     showSearchResults.value = false;
   }
 };
