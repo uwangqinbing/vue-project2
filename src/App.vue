@@ -24,6 +24,7 @@
 import Header from './components/Header.vue'
 import Sidebar from './components/Sidebar.vue'
 import Footer from './components/Footer.vue'
+import { usePostStore } from './store/postStore.js';
 </script>
 
 <style scoped>
@@ -34,3 +35,6 @@ import Footer from './components/Footer.vue'
   }
 }
 </style>
+
+const postStore = usePostStore();
+postStore.init();

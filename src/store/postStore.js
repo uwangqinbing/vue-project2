@@ -5,7 +5,6 @@ export const usePostStore = defineStore('postStore', {
     currentPost: null,
     isLoading: false,
     error: null,
-    // Mock posts database with more details
     posts: [
       {
         id: 1,
@@ -16,7 +15,7 @@ export const usePostStore = defineStore('postStore', {
         authorAvatar: '/avatars/techlover.jpg',
         date: '2023-06-15',
         tags: ['led', 'review', 'govee'],
-        image: '/post-images/led-strip.jpg',
+        image: '屏幕截图 2025-07-18 155608.png',
         likes: 45,
         comments: [
           {
@@ -33,7 +32,8 @@ export const usePostStore = defineStore('postStore', {
             content: '@LightingFan The color accuracy is excellent! They match what\'s on my screen very well.',
             date: '2023-06-16'
           }
-        ]
+        ],
+        type: 'posts'
       },
       {
         id: 2,
@@ -44,7 +44,7 @@ export const usePostStore = defineStore('postStore', {
         authorAvatar: '/avatars/smarthome.jpg',
         date: '2023-06-20',
         tags: ['smart bulbs', 'setup', 'tutorial'],
-        image: '/post-images/smart-bulb.jpg',
+        image: '屏幕截图 2025-07-18 155714.png',
         likes: 32,
         comments: [
           {
@@ -54,7 +54,8 @@ export const usePostStore = defineStore('postStore', {
             content: 'Thanks for the guide! Worked perfectly for me.',
             date: '2023-06-21'
           }
-        ]
+        ],
+        type: 'posts'
       },
       {
         id: 3,
@@ -65,7 +66,7 @@ export const usePostStore = defineStore('postStore', {
         authorAvatar: '/avatars/comparison.jpg',
         date: '2023-06-25',
         tags: ['comparison', 'smart home', 'review'],
-        image: '/post-images/comparison.jpg',
+        image: '屏幕截图 2025-07-18 155800.png',
         likes: 67,
         comments: [
           {
@@ -82,7 +83,8 @@ export const usePostStore = defineStore('postStore', {
             content: 'I\'ve had Govee for over a year and haven\'t had any issues. Great value!',
             date: '2023-06-26'
           }
-        ]
+        ],
+        type: 'posts'
       },
       {
         id: 4,
@@ -93,9 +95,10 @@ export const usePostStore = defineStore('postStore', {
         authorAvatar: '/avatars/producthunter.jpg',
         date: '2023-07-01',
         tags: ['top picks', 'best of', '2023'],
-        image: '/post-images/best-products.jpg',
+        image: '屏幕截图 2025-07-18 155810.png',
         likes: 54,
-        comments: []
+        comments: [],
+        type: 'videos'
       },
       {
         id: 5,
@@ -103,10 +106,10 @@ export const usePostStore = defineStore('postStore', {
         content: 'How to fix common connection problems with Govee devices:\n\n**Problem:** Device not connecting to Wi-Fi\n**Solution:**\n- Make sure you\'re using 2.4GHz Wi-Fi (not 5GHz)\n- Reset the device by turning it off and on again\n- Move closer to your router\n- Check that your Wi-Fi password is correct\n\n**Problem:** App not finding device\n**Solution:**\n- Enable location services on your phone\n- Restart the app\n- Clear the app cache\n- Update to the latest version of the app\n\n**Problem:** Intermittent disconnections\n**Solution:**\n- Check for interference from other devices\n- Update device firmware\n- Check router settings for device timeout limits',
         author: 'TechSupport',
         authorId: 5,
-        authorAvatar: '/avatars/techsupport.jpg',
+        authorAvatar: '/avatars/comparison.jpg',
         date: '2023-07-05',
         tags: ['troubleshooting', 'connection', 'help'],
-        image: '/post-images/troubleshooting.jpg',
+        image: '屏幕截图 2025-07-18 155714.png',
         likes: 29,
         comments: [
           {
@@ -116,7 +119,21 @@ export const usePostStore = defineStore('postStore', {
             content: 'The 2.4GHz tip fixed my problem! Thanks!',
             date: '2023-07-06'
           }
-        ]
+        ],
+        type: 'posts'
+      },
+      {
+        id: 6,
+        title: 'Govee birthday gift ideas for my mom?',
+        content: 'My mom\'s birthday is coming up, and she doesn\'t like useless keepsakes, so I was thinking that some nice bedroom lights would work. I would greatly appreciate ideas that won\'t break the bank!',
+        author: 'Master Bluetooth',
+        authorId: 6,
+        date: '2023-07-23',
+        tags: ['gift', 'ideas', 'bedroom'],
+        image: '屏幕截图 2025-07-18 155810.png',
+        likes: 589,
+        comments: [],
+        type: 'questions'
       }
     ]
   }),
@@ -127,7 +144,6 @@ export const usePostStore = defineStore('postStore', {
       this.currentPost = null;
 
       try {
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 500));
 
         const post = this.posts.find(p => p.id === Number(postId));

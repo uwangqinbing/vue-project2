@@ -1,13 +1,13 @@
 <template>
-  <header class="bg-white shadow-md">
+  <header class="bg-gray-900 shadow-sm"> 
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <!-- Logo -->
+      <!-- Logo 区域 -->
       <div class="flex items-center space-x-2">
         <img src="../assets/vue.svg" alt="Logo" class="h-8 w-auto">
-        <span class="text-xl font-bold text-gray-800">Govee Community</span>
+        <span class="text-xl font-bold text-white">Govee</span> 
       </div>
 
-      <!-- Search Bar -->
+      <!-- 搜索栏区域 -->
       <div class="flex-1 max-w-md mx-8">
         <div class="relative">
           <input
@@ -15,8 +15,10 @@
             @input="handleInput" 
             @focus="showSearchResults = true"
             @keydown.enter="handleSearchSubmit" 
-            placeholder="搜索帖子..."
-            class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+            placeholder="Search for posts,topics,and users"
+            class="w-full py-2 px-4 pr-10 rounded-full border border-gray-600 
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   text-white bg-gray-800" 
           >
           <button @click="handleSearchSubmit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -25,36 +27,61 @@
           </button>
         </div>
 
-        <!-- 实时搜索结果 -->
-        <div v-if="showSearchResults && searchResults.length > 0" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-lg overflow-hidden">
-          <div v-for="result in searchResults" :key="result.id" class="p-3 hover:bg-gray-100 cursor-pointer" @click="goToPostDetail(result.id)">
-            <h3 class="font-medium" v-html="highlightKeyword(result.title)"></h3>
-            <p class="text-sm text-gray-600" 
-            v-html="highlightKeyword(result.content.substring(0, 50) + (result.content.length > 50 ? '...' : ''))">
+        <div 
+          v-if="showSearchResults && searchResults.length > 0" 
+          class="absolute z-10 mt-2 w-full bg-gray-800 shadow-lg rounded-lg overflow-hidden"
+        >
+          <div 
+            v-for="result in searchResults" 
+            :key="result.id" 
+            class="p-3 hover:bg-gray-700 cursor-pointer" 
+            @click="goToPostDetail(result.id)"
+          >
+            <h3 class="font-medium text-white" v-html="highlightKeyword(result.title)"></h3>
+            <p class="text-sm text-gray-300" 
+               v-html="highlightKeyword(result.content.substring(0, 50) + (result.content.length > 50 ? '...' : ''))">
             </p>
           </div>
         </div>
 
-        <!-- 无结果提示 -->
-        <div v-if="showSearchResults && searchResults.length === 0 && searchQuery" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-lg p-3 text-gray-500">
+        <div 
+          v-if="showSearchResults && searchResults.length === 0 && searchQuery" 
+          class="absolute z-10 mt-2 w-full bg-gray-800 shadow-lg rounded-lg p-3 text-gray-400"
+        >
           没有找到与「{{ searchQuery }}」相关的内容
         </div>
       </div>
 
-      <!-- User Menu -->
+      <!-- 用户操作区域 -->
       <div class="flex items-center space-x-4">
-        <button v-if="!userInfo" @click="loginStore.openLoginModal()" class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
+        <button 
+          v-if="!userInfo" 
+          @click="loginStore.openLoginModal()" 
+          class="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full hover:from-blue-600 hover:to-cyan-600"
+        >
           Sign in
         </button>
-        <button v-if="userInfo" @click="handleLogout" class="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600">
+        <button 
+          v-if="userInfo" 
+          @click="handleLogout" 
+          class="px-4 py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full hover:from-red-600 hover:to-orange-600"
+        >
           Sign out
         </button>
-        <button v-if="userInfo" class="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600">
+        <button 
+          v-if="userInfo" 
+          class="px-4 py-2 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-full hover:from-green-600 hover:to-teal-600"
+        >
           Post
         </button>
+        <!-- 用户信息：头像+用户名 -->
         <div v-if="userInfo" class="flex items-center space-x-2">
-          <img :src="userInfo.avatar || '/default-avatar.png'" alt="User Avatar" class="h-8 w-8 rounded-full">
-          <span>{{ userInfo.username }}</span>
+          <img 
+            :src="userInfo.avatar || '/default-avatar.png'" 
+            alt="User Avatar" 
+            class="h-8 w-8 rounded-full"
+          >
+          <span class="text-white">{{ userInfo.username }}</span>
         </div>
       </div>
     </div>
@@ -78,14 +105,12 @@ const router = useRouter();
 const loginStore = useLoginStore();
 const searchStore = useSearchStore();
 
-// 状态管理
 const searchQuery = ref('');
 const showSearchResults = ref(false);
 const searchResults = ref([]);
 const userInfo = ref(null);
 let debounceTimer = null;
 
-// 关键词高亮
 const highlightKeyword = (text) => {
   if (!searchQuery.value) return text;
   const keyword = searchQuery.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -93,7 +118,6 @@ const highlightKeyword = (text) => {
   return text.replace(regex, '<span class="text-red-600 font-medium">$1</span>');
 };
 
-// 带防抖的实时搜索
 const handleInput = () => {
   if (debounceTimer) clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
@@ -108,7 +132,6 @@ const handleInput = () => {
   }, 200);
 };
 
-// 提交搜索（跳转到SEO结果页）
 const handleSearchSubmit = () => {
   if (searchQuery.value.trim()) {
     router.push({ name: 'SearchResults', params: { query: searchQuery.value.trim() } });
@@ -116,17 +139,14 @@ const handleSearchSubmit = () => {
   }
 };
 
-// 监听登录状态
 watch(() => loginStore.userInfo, (newVal) => {
   userInfo.value = newVal;
 }, { immediate: true });
 
-// 同步搜索结果
 watch(() => searchStore.searchResults, (newResults) => {
   searchResults.value = newResults;
 });
 
-// 初始化：从URL参数加载搜索词
 onMounted(() => {
   const query = new URLSearchParams(window.location.search).get('q');
   if (query) {
@@ -134,34 +154,35 @@ onMounted(() => {
     nextTick(() => searchStore.performSearch(query));
   }
 
-  // 点击外部关闭结果框
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.relative')) showSearchResults.value = false;
   });
 });
 
-// 清理计时器
 onUnmounted(() => {
   if (debounceTimer) clearTimeout(debounceTimer);
 });
 
-// 跳转帖子详情
 const goToPostDetail = (postId) => {
   router.push(`/post/${postId}`);
   showSearchResults.value = false;
 };
 
-// 登录/注销逻辑（不变）
 const handleLogin = async (credentials) => {
-  console.log('接收登录信息:', credentials); // 检查是否触发
+  console.log('接收登录信息:', credentials); 
   try {
     await loginStore.login(credentials);
     console.log('登录成功');
-    loginStore.closeLoginModal(); // 登录成功后关闭模态框
+    loginStore.closeLoginModal(); 
   } catch (error) {
     console.error('登录失败:', error);
-    // 改用 LoginModal的errorMessage显示错误，而非DOM查询
   }
 };
 const handleLogout = () => loginStore.logout();
 </script>
+
+<style scoped>
+input::placeholder {
+  color: #bbbbbb; 
+}
+</style>
