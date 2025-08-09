@@ -76,7 +76,10 @@
           </div>
 
           <div class="flex items-center mt-2 space-x-4 text-gray-300">
-            <span>{{ post.likes }} Likes</span>
+            <button @click.stop="toggleLike(post.id)" class="flex items-center">
+                            <span :class="post.isLiked? 'text-red-500' : 'text-gray-600'">❤</span>
+                            <span class="ml-1">{{ post.likes }} Likes</span>
+                        </button>
             <span>{{ post.comments.length }} Comments</span>
             <span>{{ formatDate(post.date) }}</span>
           </div>
@@ -109,6 +112,10 @@ const formatDate = (dateString) => {
     year: 'numeric'
   }).format(date);
 };
+
+const toggleLike = (postId) => {
+    postStore.toggleLike(postId);
+};
 </script>
 
 <style scoped>
@@ -119,5 +126,12 @@ img {
 
 .bg-blue-500 {
   background-color: #007bff !important;
+}
+
+button:hover {
+    cursor: pointer;
+}
+.text-red-500 {
+    color: #ef4444;
 }
 </style>

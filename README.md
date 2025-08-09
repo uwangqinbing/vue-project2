@@ -1,7 +1,7 @@
 # Govee项目说明文档
 
 ## 一、项目概述
-Govee Community 是基于 Vue 3 生态构建的社区交流平台，专注于 Govee 产品用户互动场景（如设备讨论、经验分享等）。
+w-community 是基于 Vue 3 生态构建的社区交流平台，专注于 Govee 产品用户互动场景（如设备讨论、经验分享等）。
 通过 Vue 3 + Vite 实现高效开发，Pinia 管理全局状态，Vue Router 处理路由，Tailwind CSS 快速构建样式，为用户提供轻量化、响应式的社区体验。
 
 ## 二、核心技术栈
@@ -13,37 +13,39 @@ Govee Community 是基于 Vue 3 生态构建的社区交流平台，专注于 Go
 | Vue Router   | 路由管理库，用于处理应用的路由        |  
 | Tailwind CSS | utility-first CSS 框架，用于快速构建响应式样式 |  
 
-## 三、项目结构
-govee-community/  
-├─ src/                  # 核心代码目录  
-│  ├─ assets/            # 静态资源  
-│  ├─ components/        # 通用组件  
-│  │  ├─ Discover.vue    # 发现页组件  
-│  │  ├─ Footer.vue      # 页脚组件  
-│  │  ├─ Header.vue      # 页眉组件  
-│  │  ├─ LoginModal.vue  # 登录弹窗  
-│  │  └─ Sidebar.vue     # 侧边栏  
-│  ├─ router/            # 路由配置  
-│  │  └─ index.js        # 定义页面路由规则（URL → 组件映射）  
-│  ├─ store/             # 状态管理（Pinia 仓库）  
-│  │  ├─ loginStore.js   # 登录状态  
-│  │  ├─ postStore.js    # 帖子状态  
-│  │  └─ searchStore.js  # 搜索状态  
-│  ├─ views/             # 页面级组件（路由直接渲染）  
-│  │  ├─ PostDetail.vue  # 帖子详情页  
-│  │  ├─ SearchResult.vue# 搜索结果页  
-│  │  └─ UserProfile.vue # 用户主页  
-│  ├─ App.vue            # 根组件（页面布局容器）  
-│  └─ main.js            # 项目入口（初始化 Vue 实例）  
-├─ public/               # 纯静态资源  
-├─ .gitignore            # Git 忽略规则  
-├─ index.html            # 页面模板（Vue 挂载入口）  
-├─ package.json          # 项目依赖、脚本配置  
-├─ package-lock.json     # 依赖版本锁定文件  
-├─ postcss.config.js     # PostCSS 配置  
-├─ tailwind.config.js    # Tailwind CSS 自定义配置  
-├─ README.md             # 项目说明文档（当前文件）  
-└─ vite.config.js        # Vite 构建工具配置  
+## 三、项目结构  
+w-community  
+- src(核心代码目录)  
+  - assets(静态资源)
+  - components(通用组件)
+      - Discover.vue(发现页组件)
+      - Footer.vue(页脚组件)
+      - Header.vue(页眉组件)
+      - LoginModal.vue(登录弹窗)
+      - Sidebar.vue(侧边栏)
+  - router(路由配置)
+      - index.js(定义页面路由规则)
+  - store(状态管理,Pinia 仓库) 
+      - loginStore.js(登录状态)  
+      - postStore.js(帖子状态)  
+      - searchStore.js(搜索状态)  
+  - views(页面级组件,路由直接渲染) 
+      - PostDetail.vue(帖子详情页)
+      - SearchResult.vue(搜索结果页)
+      - UserProfile.vue(用户主页)  
+  - App.vue(根组件,页面布局容器)  
+  - main.js(项目入口,初始化 Vue 实例)  
+  - style.css(全局样式)  
+  - tailwind.css(引入 Tailwind CSS 基础样式)  
+- public(纯静态资源)  
+- .gitignore(Git 忽略规则)  
+- index.html(页面模板,Vue 挂载入口)  
+- package.json(项目依赖、脚本配置)  
+- package-lock.json(依赖版本锁定文件)  
+- postcss.config.js(PostCSS 配置)  
+- tailwind.config.js(Tailwind CSS 自定义配置)  
+- README.md(项目说明文档)   
+- vite.config.js(Vite 构建工具配置)  
 ## 四、项目功能
 ### 快速上手指南
 1. 环境准备
@@ -52,11 +54,11 @@ govee-community/
 2. 启动开发环境
    克隆项目：
    ```bash
-   git clone https://github.com/uwangqinbing/vue-project2/govee-community.git
+   git clone https://github.com/uwangqinbing/vue-project2/w-community.git
    ```
    进入项目目录：
    ```bash
-   cd govee-community
+   cd w-community
    ```
    安装依赖：
    ```bash

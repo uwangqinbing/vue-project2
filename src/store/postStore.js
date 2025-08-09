@@ -17,6 +17,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['led', 'review', 'govee'],
         image: '屏幕截图 2025-07-18 155608.png',
         likes: 45,
+        isLiked: false,
         comments: [
           {
             id: 101,
@@ -46,6 +47,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['smart bulbs', 'setup', 'tutorial'],
         image: '屏幕截图 2025-07-18 155714.png',
         likes: 32,
+        isLiked: false,
         comments: [
           {
             id: 201,
@@ -68,6 +70,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['comparison', 'smart home', 'review'],
         image: '屏幕截图 2025-07-18 155800.png',
         likes: 67,
+        isLiked: false,
         comments: [
           {
             id: 301,
@@ -97,6 +100,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['top picks', 'best of', '2023'],
         image: '屏幕截图 2025-07-18 155810.png',
         likes: 54,
+        isLiked: false,
         comments: [],
         type: 'videos'
       },
@@ -111,6 +115,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['troubleshooting', 'connection', 'help'],
         image: '屏幕截图 2025-07-18 155714.png',
         likes: 29,
+        isLiked: false,
         comments: [
           {
             id: 501,
@@ -132,6 +137,7 @@ export const usePostStore = defineStore('postStore', {
         tags: ['gift', 'ideas', 'bedroom'],
         image: '屏幕截图 2025-07-18 155810.png',
         likes: 589,
+        isLiked: false,
         comments: [],
         type: 'questions'
       }
@@ -161,6 +167,18 @@ export const usePostStore = defineStore('postStore', {
     },
     clearCurrentPost() {
       this.currentPost = null;
+    },
+    toggleLike(postId) {
+      const post = this.posts.find(p => p.id === postId);
+      if (post) {
+        if (post.isLiked) {
+          post.likes--;
+          post.isLiked = false;
+        } else {
+          post.likes++;
+          post.isLiked = true;
+        }
+      }
     }
   }
 });
